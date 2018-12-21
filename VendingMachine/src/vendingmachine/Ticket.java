@@ -16,7 +16,6 @@ public interface Ticket {
     
 }
 
-
   class Zone1 implements Ticket {
         final private String type;
         final private String description;

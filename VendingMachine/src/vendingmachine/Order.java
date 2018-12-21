@@ -12,12 +12,11 @@ public class Order {
     private ArrayList<Ticket> orderList = new ArrayList<>();
     private int totalPrice;
     
-    
         public Integer getNumberOfTickets(){
             return orderList.size();
         }
         
-        protected void calculatePrice(int unitprice, int amount) {
+        public void calculatePrice(int unitprice, int amount) {
             totalPrice = totalPrice + (unitprice * amount);
         }
         
@@ -39,7 +38,7 @@ public class Order {
 
             while (activeShopping) {
                 System.out.println();
-                System.out.println("Good morning, please follow instructions on scree.");
+                System.out.println("Good morning, please follow instructions on screen.");
                 System.out.println("Select ticket to issue\n"
                                + "\n1 - Zone 1 ticket, price: " + (zone1.getUnitCost() / 100.0)
                                + "\n2 - Zone 2 ticket, price: " + (zone2.getUnitCost() / 100.0)
@@ -102,14 +101,12 @@ public class Order {
             }
         }
     
-        
-        protected void createOrder(Ticket type, int increment) {
+        public void createOrder(Ticket type, int increment) {
            for (int i = 0 ; i < increment ; i ++) {
            orderList.add(type);        
            }
     
         }
-      
     
         public ArrayList getOrder(){
             return orderList;

@@ -8,13 +8,10 @@ import java.util.ArrayList;
  */
 public class Buffer {
     
-    String [] acceptedValues = {"gr10", "gr20", "gr50", "zl1", "zl2", "zl5", "zl10", "zl20"};
-
-    protected ArrayList<String> moneyBuffer = new ArrayList<>();
-
+    private final String [] acceptedValues = {"gr10", "gr20", "gr50", "zl1", "zl2", "zl5", "zl10", "zl20"};
+    private ArrayList<String> moneyBuffer = new ArrayList<>();
     private Integer insertedCash = 0;    
     private Integer paperUnitsLeft = 100;
-
     private Integer gr10 = 10;
     private Integer gr20 = 20;
     private Integer gr50 = 15;
@@ -71,15 +68,42 @@ public class Buffer {
     public void setPaperUnitsLeft(Integer paperUnits) {
         this.paperUnitsLeft = paperUnitsLeft + paperUnits;
     }
-//    public Double getAvailableMoney() {
-//        return gr10 + gr20 + gr50 + zl1 + zl2 + zl5 + zl10 + zl20;
-//    }
     
     public void insertMoney(String coin) {
-        
-
         moneyBuffer.add(coin);
         
+            if (coin.equals("gr10")) {
+                insertedCash += 10;
+                gr10 += 1;
+            }
+            if (coin.equals("gr20")) {
+                insertedCash += 20;
+                gr20 += 1;
+            }
+            if (coin.equals("gr50")) {
+                insertedCash += 50;
+                gr50 += 1;
+            }
+            if (coin.equals("zl1")) {
+                insertedCash += 100;
+                zl1 += 1;
+            }
+            if (coin.equals("zl2")) {
+                insertedCash += 200;
+                zl2 += 1;
+            }
+            if (coin.equals("zl5")) {
+                insertedCash += 500;
+                zl5 += 1;
+            }
+            if (coin.equals("zl10")) {
+                insertedCash += 1000;
+                zl10 += 1;
+            }
+            if (coin.equals("zl20")) {
+                insertedCash += 2000;
+                zl20 += 1;
+            } 
     }
     
     public void returnMoney(ArrayList<String> moneyBuffer){
@@ -122,47 +146,13 @@ public class Buffer {
     public void zeroMoneyBuffer(){
         insertedCash = 0;
     }
+
+    public void zeroMoneyBufferList(){
+        moneyBuffer.clear();
+    }
     
     public Integer getInsertedCash(){
         return insertedCash;
-    }
-    
-    public void countInsertedMoney() {
-        for (String i: moneyBuffer) {
-            if (i.equals("gr10")) {
-                insertedCash += 10;
-                gr10 += 1;
-            }
-            if (i.equals("gr20")) {
-                insertedCash += 20;
-                gr20 += 1;
-            }
-            if (i.equals("gr50")) {
-                insertedCash += 50;
-                gr50 += 1;
-            }
-            if (i.equals("zl1")) {
-                insertedCash += 100;
-                zl1 += 1;
-            }
-            if (i.equals("zl2")) {
-                insertedCash += 200;
-                zl2 += 1;
-            }
-            if (i.equals("zl5")) {
-                insertedCash += 500;
-                zl5 += 1;
-            }
-            if (i.equals("zl10")) {
-                insertedCash += 1000;
-                zl10 += 1;
-            }
-            if (i.equals("zl20")) {
-                insertedCash += 2000;
-                zl20 += 1;
-            }   
-        }        
-
     }
     
     public ArrayList<String> calculateChange(Integer change){

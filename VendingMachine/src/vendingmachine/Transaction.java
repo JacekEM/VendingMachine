@@ -1,5 +1,6 @@
 
 package vendingmachine;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 /**
@@ -11,7 +12,6 @@ public class Transaction {
     private static Transaction ui = new Transaction();
     private Order order = new Order();
     private Buffer buffer = new Buffer();
-    
     
     protected void makeTransaction() {
         
@@ -33,13 +33,13 @@ public class Transaction {
           String coin = in.next();
           if (coin.equals("cancel")) {
             buffer.returnMoney(buffer.getMoneyBuffer());
+            buffer.zeroMoneyBufferList();
+            buffer.zeroMoneyBuffer();
             break;
           } else {
             buffer.insertMoney(coin);
-            buffer.countInsertedMoney();
             System.out.println("inserted cash:" + (buffer.getInsertedCash() / 100.0) + " zl" );
             }
-
         }
       }
     
@@ -55,6 +55,7 @@ public class Transaction {
       printTickets(order.getOrder());
       buffer.returnMoney(buffer.calculateChange(change));
       buffer.zeroMoneyBuffer();
+      buffer.zeroMoneyBufferList();
       System.out.flush();
       
     }
